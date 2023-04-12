@@ -16,7 +16,7 @@
 		<integer name="capacity" title="Capacity"/>
 		<decimal name="eventfee" title="Event Fees"/>
 		<string name="description" title="Discription" large="true"/>
-		<one-to-many ref="com.axelor.ems.db.Discount" name="discount" title="Discounts"/>
+		<one-to-many ref="com.axelor.ems.db.Discount" name="discount" title="Discounts" mappedBy="event"/>
 		<one-to-many ref="com.axelor.ems.db.EventRegistration" name="eventregistration" title="Event Registrations" mappedBy="event"/>
 		<integer name="totalentry" title="Total Entry" readonly="true"/>
 		<decimal name="amountcollect" title="Amount Collected" readonly="true"/>

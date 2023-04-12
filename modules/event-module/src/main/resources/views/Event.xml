@@ -38,7 +38,7 @@
 			</panel>
 			<panel title="Information" colSpan="12" stacked="true" attached="false">
 				<field name="eventregistration" title="Event Registration" onChange="action-total-entry,action-total-amount" />
-				<field name="discount" title="Discounts" />
+				<field name="discount" title="Discounts"  onChange="action-for-total-discount"/>
 			</panel>
 
 			<panel title="Summary" colSpan="12">
@@ -122,6 +122,11 @@
 	<action-method name="action-total-amount">
 		<call class="com.axelor.ems.controller.EmsController" method="totalAmount"/>
 	</action-method>
+	
+	<action-method name="action-for-total-discount">
+	<call class="com.axelor.ems.controller.EmsController" method="totalDiscountAmount"/>
+</action-method>
+
 	
 
 
