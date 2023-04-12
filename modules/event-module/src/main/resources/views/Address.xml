@@ -8,7 +8,7 @@
 	<field name="fh_no" title="Flat/House No."/>
 	<field name="street" title="Street"/>
 	<field name="landmark" title="LandMark"/>
-	<field name="city" title="City"/>
+	<field name="city" title="City" />
 	<field name="country" title="Country"/>
 	<field name="fullName" title="FullName"/>
 </grid>
