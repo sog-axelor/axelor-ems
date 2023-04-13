@@ -23,7 +23,7 @@
 	</grid>
 
 	<form model="com.axelor.ems.db.Event" title="Event"
-		name="event-form">
+		name="event-form" onSave="com.axelor.ems.controller.EmsController:capicity">
 		<panel >
 
 			<panel title="Overview" colSpan="12" attached="false">

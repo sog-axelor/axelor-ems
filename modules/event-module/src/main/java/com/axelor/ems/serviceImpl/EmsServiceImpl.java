@@ -1,7 +1,15 @@
 package com.axelor.ems.serviceImpl;
-
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.math.BigDecimal;
-
 import com.axelor.ems.db.Discount;
 import com.axelor.ems.db.Event;
 import com.axelor.ems.db.EventRegistration;
@@ -46,6 +54,16 @@ public class EmsServiceImpl implements EmsService {
 		long totalEntry = er.getEventregistration().stream().count();
 		er.setTotaldisc(totalDiscountAmount.multiply(new BigDecimal(totalEntry)));
 		return er;
+	}
+
+	@Override
+	public LocalDate rDate(Event er) {
+		
+		//er.getEventregistration().stream().map(EventRegistration::getRegdate)
+		
+		
+		return null;
+		
 	}
 
 	
