@@ -23,8 +23,9 @@
 	</grid>
 
 	<form model="com.axelor.ems.db.Event" title="Event"
-		name="event-form" onSave="com.axelor.ems.controller.EmsController:capicity">
-		<panel >
+		name="event-form"
+		onSave="com.axelor.ems.controller.EmsController:capicity">
+		<panel>
 
 			<panel title="Overview" colSpan="12" attached="false">
 				<field name="reference" title="Reference" />
@@ -36,9 +37,12 @@
 				<field name="capacity" title="Capacity" />
 				<field name="eventfee" title="Event Fees" />
 			</panel>
-			<panel title="Information" colSpan="12" stacked="true" attached="false">
-				<field name="eventregistration" title="Event Registration" onChange="action-total-entry,action-total-amount" />
-				<field name="discount" title="Discounts"  onChange="action-for-total-discount"/>
+			<panel title="Information" colSpan="12" stacked="true"
+				attached="false">
+				<field name="eventregistration" title="Event Registration"
+					onChange="action-total-entry,action-total-amount" />
+				<field name="discount" title="Discounts"
+					onChange="action-for-total-discount" />
 			</panel>
 
 			<panel title="Summary" colSpan="12">
@@ -47,11 +51,11 @@
 					readonly="true" />
 				<field name="totaldisc" title="Total Discount" readonly="true" />
 			</panel>
-		<panel title="Information" colSpan="12">
-					<field name="description" title="Description" colSpan="12"/>
-		</panel>
-	
-		
+			<panel title="Information" colSpan="12">
+				<field name="description" title="Description" colSpan="12" />
+			</panel>
+
+
 
 
 
@@ -115,19 +119,22 @@
 		title="Event Calander">
 		<field name="address" />
 	</calendar>
-	
+
 	<action-method name="action-total-entry">
-		<call class="com.axelor.ems.controller.EmsController" method="totalGuest"/>
+		<call class="com.axelor.ems.controller.EmsController"
+			method="totalGuest" />
 	</action-method>
 	<action-method name="action-total-amount">
-		<call class="com.axelor.ems.controller.EmsController" method="totalAmount"/>
+		<call class="com.axelor.ems.controller.EmsController"
+			method="totalAmount" />
 	</action-method>
-	
-	<action-method name="action-for-total-discount">
-	<call class="com.axelor.ems.controller.EmsController" method="totalDiscountAmount"/>
-</action-method>
 
-	
+	<action-method name="action-for-total-discount">
+		<call class="com.axelor.ems.controller.EmsController"
+			method="totalDiscountAmount" />
+	</action-method>
+
+
 
 
 </object-views>

@@ -56,13 +56,11 @@ public class EmsServiceImpl implements EmsService {
 		return er;
 	}
 
+
 	@Override
-	public LocalDate rDate(Event er) {
-		
-		//er.getEventregistration().stream().map(EventRegistration::getRegdate)
-		
-		
-		return null;
+	public void totalCapicity(Event er) {
+		long totalEntry = er.getEventregistration().stream().count();
+		int te = (int) totalEntry;
 		
 	}
 

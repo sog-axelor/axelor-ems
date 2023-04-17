@@ -19,7 +19,7 @@
 	<field name="name" title="Name"/>
 	<field name="email" title="Email"/>
 	<field name="address" title="Address"/>
-	<field name="regdate" title="Registration Date"/>
+	<field name="regdate" title="Registration Date" onChange="action-for-date"/>
 	<field name="amount" title="Amount"/>
 	</panel>
 </form>
@@ -28,6 +28,10 @@
         model="com.axelor.ems.db.EventRegistration">
         <field name="amount" expr="eval: event.eventfee" />
     </action-record>
+    
+    <action-method name="action-for-date">
+	<call class="com.axelor.ems.controller.EmsController" method="checkDate"/>
+</action-method>
 
 
 </object-views>
