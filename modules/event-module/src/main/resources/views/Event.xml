@@ -30,10 +30,10 @@
 			<panel title="Overview" colSpan="12" attached="false">
 				<field name="reference" title="Reference" />
 				<field name="startdate" title="Start Date" />
-				<field name="enddate" title="End Date" />
+				<field name="enddate" title="End Date" onChange="action-event-date-validate"/>
 				<field name="address" title="Venue" />
 				<field name="regopen" title="Registration Open" />
-				<field name="regclose" title="Registration Close" />
+				<field name="regclose" title="Registration Close" onChange="action-reg-date-validate"/>
 				<field name="capacity" title="Capacity" />
 				<field name="eventfee" title="Event Fees" />
 			</panel>
@@ -133,7 +133,19 @@
 		<call class="com.axelor.ems.controller.EmsController"
 			method="totalDiscountAmount" />
 	</action-method>
-
+	
+		
+	
+	<action-validate name="action-event-date-validate">
+		  <error message="End date should not be in past" if="startdate &gt; enddate"/>
+	</action-validate>
+	
+	
+	<action-validate name="action-reg-date-validate">
+		  <error message="Close date should not be in past." if="regopen &gt; regclose"/>
+	</action-validate>
+	
+	
 
 
 

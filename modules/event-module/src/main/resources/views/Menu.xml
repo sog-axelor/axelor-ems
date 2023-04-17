@@ -5,7 +5,7 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 	<menuitem title="Event Managment" name="ems-root"
-		icon="fa-sharp fa-regular fa-calendar-lines-pen"/>
+		icon="fa-comment-o"/>
 
 	<menuitem title="Discount Detail" name="discount-detail"
 		parent="ems-root" action="discount.action" />

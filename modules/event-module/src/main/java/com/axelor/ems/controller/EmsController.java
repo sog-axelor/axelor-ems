@@ -2,12 +2,7 @@ package com.axelor.ems.controller;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.Date;
-
 import javax.inject.Inject;
-import javax.persistence.Convert;
-
 import com.axelor.ems.db.Discount;
 import com.axelor.ems.db.Event;
 import com.axelor.ems.db.EventRegistration;
@@ -42,6 +37,7 @@ public class EmsController {
 	public void totalDiscountAmount(ActionRequest request, ActionResponse response) {
 		Event event = request.getContext().asType(Event.class);
 		event = es.totalDiscountAmount(event);
+		
 		response.setValue("totaldisc", event.getTotaldisc());
 	}
 
@@ -67,5 +63,11 @@ public class EmsController {
 		if (!date.isAfter(regD) && date.isBefore(colD)) {
 			response.setFlash("Date is closed");
 		}
+	}
+	
+	public void testContext(ActionRequest request, ActionResponse response) {
+		Event event = request.getContext().asType(Event.class);
+		
+		System.err.println(event);
 	}
 }
