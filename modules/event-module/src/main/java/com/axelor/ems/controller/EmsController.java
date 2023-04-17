@@ -1,7 +1,13 @@
 package com.axelor.ems.controller;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Stream;
+
 import javax.inject.Inject;
 import com.axelor.ems.db.Discount;
 import com.axelor.ems.db.Event;
@@ -37,7 +43,7 @@ public class EmsController {
 	public void totalDiscountAmount(ActionRequest request, ActionResponse response) {
 		Event event = request.getContext().asType(Event.class);
 		event = es.totalDiscountAmount(event);
-		
+		System.err.println(es.totalDiscountAmount(event));
 		response.setValue("totaldisc", event.getTotaldisc());
 	}
 
@@ -56,18 +62,45 @@ public class EmsController {
 	public void checkDate(ActionRequest request, ActionResponse response) {
 
 		EventRegistration er = request.getContext().asType(EventRegistration.class);
-		Event e = request.getContext().getParentContext().asType(Event.class);
+		Event e = request.getContext().getParent().asType(Event.class);
 		LocalDate date = convert(er.getRegdate());
 		LocalDate regD = e.getRegopen();
 		LocalDate colD = e.getRegclose();
 		if (!date.isAfter(regD) && date.isBefore(colD)) {
 			response.setFlash("Date is closed");
+			return;
 		}
+		
+		
+        long daysBetween = ChronoUnit.DAYS.between(date, colD);
+        
+//		List<Discount> discount = e.getDiscount();
+//		//discount.forEach(i-> System.err.println(i.getBefore_days()));
+//		discount.forEach(i-> {
+//			if(daysBetween >= i.getBefore_days()) {
+//				BigDecimal discountAmount = i.getDiscount_amount();
+//				response.setValue("amount", e.getEventfee().subtract(discountAmount));
+//			}
+//		});
+		
+		 Discount discount2 = e.getDiscount().stream().filter(t -> daysBetween >= t.getBefore_days()).max(Comparator.comparing(Discount::getDiscount_percent)).orElse(null);
+		response.setValue("amount", e.getEventfee().subtract(discount2.getDiscount_amount()));
+
+
+		
+		
+	
 	}
 	
-	public void testContext(ActionRequest request, ActionResponse response) {
+	public void getEventRegAmount(ActionRequest request, ActionResponse response) {
 		Event event = request.getContext().asType(Event.class);
-		
-		System.err.println(event);
+		Discount discount = request.getContext().getParentContext().asType(Discount.class);
+		LocalDate date = es.checkDate(discount, event);
+		if(event.getRegclose().isAfter(date)) {
+			
+		}
+
 	}
+	
+	
 }

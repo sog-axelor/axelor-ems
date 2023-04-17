@@ -1,6 +1,10 @@
 package com.axelor.ems.serviceImpl;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+
 import com.axelor.ems.db.Discount;
 import com.axelor.ems.db.Event;
 import com.axelor.ems.db.EventRegistration;
@@ -44,6 +48,22 @@ public class EmsServiceImpl implements EmsService {
 
 		return er;
 	}
+
+	
+
+	@Override
+	public LocalDate checkDate(Discount d, Event e) {
+		LocalDate date = e.getRegclose();
+		int days = d.getBefore_days();
+		LocalDate newDate = date.minusDays(days);
+		return newDate;
+	}
+
+
+
+
+	
+
 
 }
 
