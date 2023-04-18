@@ -38,16 +38,7 @@ public class EmsServiceImpl implements EmsService {
 		return d;
 	}
 
-	@Override
-	public Event totalDiscountAmount(Event er) {
-		BigDecimal totalDiscountAmount = BigDecimal.ZERO;
-		totalDiscountAmount = er.getDiscount().stream().map(Discount::getDiscount_amount).reduce(BigDecimal.ZERO,BigDecimal::add);
-		long totalEntry = er.getEventregistration().stream().count();
-		er.setTotaldisc(totalDiscountAmount.multiply(new BigDecimal(totalEntry)));
-		
 
-		return er;
-	}
 
 	
 

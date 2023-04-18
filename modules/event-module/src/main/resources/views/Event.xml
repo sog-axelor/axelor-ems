@@ -40,16 +40,15 @@
 			<panel title="Information" colSpan="12" stacked="true"
 				attached="false">
 				<field name="eventregistration" title="Event Registration"
-					onChange="action-total-entry,action-total-amount" />
-				<field name="discount" title="Discounts"
-					onChange="action-for-total-discount" />
+					onChange="action-total-entry,action-total-amount,action-for-total-discount" />
+				<field name="discount" title="Discounts" />
 			</panel>
 
 			<panel title="Summary" colSpan="12">
 				<field name="totalentry" title="Total Entry" readonly="true" />
 				<field name="amountcollect" title="Amount Collected"
 					readonly="true" />
-				<field name="totaldisc" title="Total Discount" readonly="true" />
+				<field name="totaldisc" title="Total Discount" readonly="true"  />
 			</panel>
 			<panel title="Information" colSpan="12">
 				<field name="description" title="Description" colSpan="12" />

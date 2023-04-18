@@ -42,9 +42,10 @@ public class EmsController {
 
 	public void totalDiscountAmount(ActionRequest request, ActionResponse response) {
 		Event event = request.getContext().asType(Event.class);
-		event = es.totalDiscountAmount(event);
-		System.err.println(es.totalDiscountAmount(event));
-		response.setValue("totaldisc", event.getTotaldisc());
+		BigDecimal totalAmount = event.getEventfee().multiply(new BigDecimal(event.getTotalentry()));
+		BigDecimal amountcollect = event.getAmountcollect();
+		BigDecimal discount = totalAmount.subtract(amountcollect);
+		response.setValue("totaldisc", discount);
 	}
 
 	public void capicity(ActionRequest request, ActionResponse response) {

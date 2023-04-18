@@ -10,7 +10,6 @@ public interface EmsService {
 	 public Event countEntry(Event er);
 	 public Event totalAmount(Event er);
 	 public Discount totalDiscoint(Discount d, Event e);
-	 public Event totalDiscountAmount(Event er);
 	 public LocalDate checkDate(Discount d, Event e);
 
 }
